@@ -1,0 +1,42 @@
+<?php  
+//my eligibility expectation: 
+$eligibilityCriteria = [  'diploma' => 'CP', 'yearsOfExperience' => '2', 'graduationDate' => '2020', 'importantSkill' => 'PHP'  
+];  
+//empty array to store the user input:
+$userData = [];  
+//reading the user input to check their eligibility: 
+//diploma check:
+echo "Enter diploma initials: ";  
+$userData['diploma'] = readline();  
+//years of experience check:   
+echo "Enter years of experience here: ";  
+$userData['yearsOfExperience'] = readline();  
+//graduation year check:  
+echo "Enter graduation year: ";  
+$userData['graduationDate'] = readline();  
+//skill check:  
+echo "Enter your key skill such as programming language: ";  
+$userData['importantSkill'] = readline();  
+//the program is case sensitive, it can be modified but wasnt asked
+//so i didnt make it that way - tolower or toupper for exapmle.
+//using a boolean to determine eligible or not eligible
+$isEligible = true;
+//for loop to go through the 4 questions,
+//in order to use the for loop i had to use the $key to retrieve the key of the current element in the array.
+for ($i = 0; $i < 4; $i++) {
+    $key = array_keys($eligibilityCriteria)[$i];
+    $value = $eligibilityCriteria[$key];
+//if the user input isnt equal to the job needs, it will make to boolean false, and print the else statement in the output for the user.
+    if ($userData[$key] !== $value) {
+        $isEligible = false;
+        break;
+    }
+}
+
+//depends on the user input the result will show:
+if ($isEligible) {  
+    echo "You are eligible for the job, your interview is in 1 week!";  
+} else {  
+    echo "We are sorry, we moved on with other candidates.";  
+}  
+?>
